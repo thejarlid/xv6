@@ -1,0 +1,28 @@
+Dilraj Devgun
+1537499
+
+Lab 4 Questions
+
+Question 1:
+
+The complexity behind setting up the core map to map physical pages is that there needs to be a place for the core map to be initialized in the first place. To solve this problem, xk allocates the core map inside mem_init which is called from main. The core map is not created statically or using kalloc instead the core map is created dynamically by setting a region of space starting at the first address after the kernel is loaded from the ELF file to npages * sizeof(struct core_map_entry). After this code is run the core map size doesn't change. But we set it by manually creating a space of a set size. We also have a manual page table that is created in assembly code in bootasm.S
+
+The complexity behind setting up the core map to map physical pages is that there then needs to be space for the core map to be initialized in the first place. To solve this problem, xk allocates the Core Map inside mem_init which is called from main. Inside this method we allocate memory starting at the first address after the kernel is loaded from the ELF file. The memory is a static amount but it is sufficient to allocate thr first kernel page. This is fine since the free list doesn't consume more memory it is simply chained on.
+
+
+Question 2:
+
+The fuctions xint() and xshort() are used to convert the uint and ushort to intel byte order which is little endian. These methods are used to swap the byte representation of the int and short values passed into the method.
+
+
+Question 3:
+
+There are more physical memory blocks than there are cache entry blocks so when xk runs out of block cache entries the system then has to evict entries and begin to swap them in and out to use multiple blocks on disk. xk  
+
+
+Question 4:
+
+Since xk guarantees that a physical memory page has a single virtual address because shared memory is created by either mmap or fork. Because in commercial operating systems mmap can map a file to different user memory spaces, our design must change so that instead of looking through every process for the same virtual address and doing a walkpml4 on that, we are not guaranteed that the same virtual address in each process corresponds to the same physical page. Therefore one solution is we can loop through every virtual address for a process page by page and check if its physical address corresponds to the physical page we are swapping out. Another solution is keep track of every virtual address associated with a given page but that is a much more complicated design which would potentially need a dynamically allocated array for the number of VAs that could potentially be attributed to a page. For metadata that seems like a bit too much so instead the small inefficency to loop a process's VA space for a given physical address may make more sense.
+
+Time Spent:
+Dilraj Devgun: 80+ hours

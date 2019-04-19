@@ -1,0 +1,237 @@
+qemu-system-x86_64  -m 16M -serial mon:stdio -smp cpus=1 -drive file=out/fs.img,index=1,media=disk,format=raw -drive file=out/xk.img,index=0,media=disk,format=raw -nographic
+xk...
+CPU: QEMU Virtual CPU version 2.5+
+  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2
+  sse3 cx16 hypervisor
+  syscall nx lm
+  lahf_lm svm
+E820: physical memory map [mem 0x9000-0x908f]
+  [mem 0x0-0x9fbff] available
+  [mem 0x9fc00-0x9ffff] reserved
+  [mem 0xf0000-0xfffff] reserved
+  [mem 0x100000-0xfdffff] available
+  [mem 0xfe0000-0xffffff] reserved
+  [mem 0xfffc0000-0xffffffff] reserved
+
+cpu0: starting xk
+
+free pages: 3683
+cpu0: starting
+ab5test_b
+lab5test_b
+sb: size 100000 nblocks 34407 bmap start 65568 inodestart 65593
+init: starting sh
+$ exec ab5test_b failed
+$ lab5test_b starting
+crash after 1 steps
+xk...
+CPU: QEMU Virtual CPU version 2.5+
+  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2
+  sse3 cx16 hypervisor
+  syscall nx lm
+  lahf_lm svm
+E820: physical memory map [mem 0x9000-0x908f]
+  [mem 0x0-0x9fbff] available
+  [mem 0x9fc00-0x9ffff] reserved
+  [mem 0xf0000-0xfffff] reserved
+  [mem 0x100000-0xfdffff] available
+  [mem 0xfe0000-0xffffff] reserved
+  [mem 0xfffc0000-0xffffffff] reserved
+
+cpu0: starting xk
+
+free pages: 3683
+cpu0: starting
+ab5test_b
+sb: size 100000 nblocks 34407 bmap start 65568 inodestart 65593
+init: starting sh
+$ exec ab5test_b failed
+$ lab5test_b
+lab5test_b starting
+crash after 2 steps
+xk...
+CPU: QEMU Virtual CPU version 2.5+
+  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2
+  sse3 cx16 hypervisor
+  syscall nx lm
+  lahf_lm svm
+E820: physical memory map [mem 0x9000-0x908f]
+  [mem 0x0-0x9fbff] available
+  [mem 0x9fc00-0x9ffff] reserved
+  [mem 0xf0000-0xfffff] reserved
+  [mem 0x100000-0xfdffff] available
+  [mem 0xfe0000-0xffffff] reserved
+  [mem 0xfffc0000-0xffffffff] reserved
+
+cpu0: starting xk
+
+free pages: 3683
+cpu0: starting
+sb: size 100000 nblocks 34407 bmap start 65568 inodestart 65593
+init: starting sh
+$ lab5test_b
+lab5test_b starting
+crash after 3 steps
+xk...
+CPU: QEMU Virtual CPU version 2.5+
+  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2
+  sse3 cx16 hypervisor
+  syscall nx lm
+  lahf_lm svm
+E820: physical memory map [mem 0x9000-0x908f]
+  [mem 0x0-0x9fbff] available
+  [mem 0x9fc00-0x9ffff] reserved
+  [mem 0xf0000-0xfffff] reserved
+  [mem 0x100000-0xfdffff] available
+  [mem 0xfe0000-0xffffff] reserved
+  [mem 0xfffc0000-0xffffffff] reserved
+
+cpu0: starting xk
+
+free pages: 3683
+cpu0: starting
+sb: size 100000 nblocks 34407 bmap start 65568 inodestart 65593
+init: starting sh
+$ lab5test_b
+lab5test_b starting
+crash after 4 steps
+xk...
+CPU: QEMU Virtual CPU version 2.5+
+  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2
+  sse3 cx16 hypervisor
+  syscall nx lm
+  lahf_lm svm
+E820: physical memory map [mem 0x9000-0x908f]
+  [mem 0x0-0x9fbff] available
+  [mem 0x9fc00-0x9ffff] reserved
+  [mem 0xf0000-0xfffff] reserved
+  [mem 0x100000-0xfdffff] available
+  [mem 0xfe0000-0xffffff] reserved
+  [mem 0xfffc0000-0xffffffff] reserved
+
+cpu0: starting xk
+
+free pages: 3683
+cpu0: starting
+sb: size 100000 nblocks 34407 bmap start 65568 inodestart 65593
+init: starting sh
+$ lab5test_b
+lab5test_b starting
+crash after 5 steps
+xk...
+CPU: QEMU Virtual CPU version 2.5+
+  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2
+  sse3 cx16 hypervisor
+  syscall nx lm
+  lahf_lm svm
+E820: physical memory map [mem 0x9000-0x908f]
+  [mem 0x0-0x9fbff] available
+  [mem 0x9fc00-0x9ffff] reserved
+  [mem 0xf0000-0xfffff] reserved
+  [mem 0x100000-0xfdffff] available
+  [mem 0xfe0000-0xffffff] reserved
+  [mem 0xfffc0000-0xffffffff] reserved
+
+cpu0: starting xk
+
+free pages: 3683
+cpu0: starting
+sb: size 100000 nblocks 34407 bmap start 65568 inodestart 65593
+init: starting sh
+$ lab5test_b
+lab5test_b starting
+crash after 6 steps
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ lab5test_b
+lab5test_b starting
+big.txt is completely written
+lab5test_b passed!
+$ 

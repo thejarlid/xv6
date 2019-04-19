@@ -1,0 +1,22 @@
+Dilraj Devgun
+
+Lab 2 Short Response
+Question 1:
+
+The difference between Scheduler, Sched, and Swtch is that they are three distinct parts of an intertwined system. The Scheduler is a Per-CPU process that runs infinitely and chooses a process to run. Once it has found one it then calls swtch to actually switch into that process and run it. Looking at the code for swtch inside Swtch.c the code sets up registers so that the new process can actually run. The third part is Sched which is called by a user program to enter the Scheduler. When this is called the ptable.lock must be held and the process's state must have changed. This method then calls the Scheduler for the CPU that the program is running on so that it can then switch to a new process.
+
+
+Question 2:
+
+The child process is able to return to the user-level application where fork is called because the fork system call makes a deep copy of the current process's state including all its data, code, heap, stack, and registers. Included in this deep copy is the trap frame which contains `rip`, the instruction pointer, which when the newly created program gets context switched in, the rip is pointed to the fork call for the parent process. So the child process also gets the same instruction pointer.
+
+
+Question 3:
+
+kill is given a pid then gets the associated process struct and flips its killed value. Kill allows another process kill another, while exit is called on the process itself to terminate. Because the killed process could be running on another CPU kill only updates the killed value and then if the process is sleeping it wakes it up. When the killed process is then executed it will call exit. We have to test the killed value in the sleep call so that if we are awakened we stop what we are doing. Eventually the trap will be called and the flag will be checked and exit will be called.
+
+
+Question 4:
+
+Time Spent:
+Dilraj Devgun : 12 Hours

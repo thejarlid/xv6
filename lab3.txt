@@ -1,0 +1,36 @@
+Dilraj Devgun
+1537499
+
+Lab 3 Short Response
+Question 1:
+
+Users would much rather use malloc and free instead of sbrk because of malloc and free's simplicity. malloc and free are user level routines that user sbrk underneath to actually handle heap growth. What makes the two methods much simpler is that by using malloc and free the user does not have to worry about looping constantly to check if the correct amount of data was allocated. Under free and malloc the program must loop over the bytes currently available in the heap and then allocate more as we go using sbrk. For users defining this behaviour once and then using it everywhere is a better system that makes user application code simpler to understand.
+
+
+Question 2:
+
+When the user types 'ls | wc' the shell runs the pipe command and uses the file descriptor system's implementation of pipes to facilitate communication and data transfer between two processes. What happens is that the program forks two processes, in child 1 we close stdout and dup the write end of the pipe and in child 2 we close stdin and dup the read end of the pipe. What this then enables is due to file descriptors providing the recently closed file descriptor on the next dup or open we have a stream of bytes being written into the write end of the pipe and read out of the read end. Since the pipe provides two file descriptors we use those to replace the stdout and stdin appropriately in the two forked children.
+
+
+Question 3:
+
+When a syscall completes, user-level execution begins with the instruction immediately after the syscall, when a page fault occurs execution resumes on the same instruction so that it can re-executed after hopefully the page fault was handled.
+
+
+Question 4:
+
+When a user uses an unmapped reference the kernel has to decide if it is a normal stack operation versus a stray pointer dereference that should cause the application to halt. In general our xk system checks whether the reference address is within the bounds of the kernel stack area, being 2G to 10 * PGSIZE. We consider anything in this area to be legal and when the user dereferences memory in that area it is not guaranteed to have useful data, it could be junk data. Anything outside of the bounds is a legal page fault. In general a legal stack operation should be anything within a process's procedure's stack frame. For example local variables such as the million integers would comprise a procedure's stack frame so we can test the legality of accessing that data by putting it in the procedure's stack frame and growing the stack accordingly. If we use some compiler help too we can determine if the user is accessing local variables in another procedure and that should also cause the halting behaviour. The caveat is however passing pointers to the method. If in one method we use a pointer dereference to get data inside another procedure's stack frame. What this enables is for us to dereference data above the current stack frame. In general a legal dereference should be anything inside our current stack bounds from 2G to the current written data. From there we can write more local variables extending the base of the stack and growing the stack as needed but then reading should be legal within the stack bounds
+
+
+Question 5:
+
+It is possible to reduce the user stack at runtime. My idea is to go of a similar system to how we grow the stack but in reverse. If a procedure returns the stack frame disappears. If in that creation or duration of that procedure we have to grow the stack and allocate pages, then when we change the stack base pointer and move it upwards we can deallocate any pages below the PGROUNDDOWN(rbp) or PGROUNDDOWN(rsp). The intent is to deallocate pages we no longer intend to use or can access in the current stack frame.
+
+
+Question 6:
+
+When we modify the page table entry in xk to allow for write access, to ensure that the TLB does not have a stale version of the cache we end up flushing the cache out for the current process by calling switchuvm. That way the new version is then pulled into the cache after.
+
+
+Time Spent:
+Dilraj Devgun: 80+ Hours

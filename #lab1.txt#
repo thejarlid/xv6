@@ -1,0 +1,62 @@
+Dilraj Devgun
+Bryan Yue
+Amin Shaykho
+CSE 451
+#Lab 1 Questions
+
+
+##Question 1:
+
+Line 25 (cpuid_print();) prints the cpu information
+Line 26 (e820_print();) prints the physical memory table
+
+
+##Question 2:
+
+The memory address of 'main' is 0xffffffff80100612
+GDB does NOT work with the real physical address
+
+
+##Question 3:
+
+The main reason is for system calls. When a user-application makes a system call, the kernel code handling the system call can then directly refer to user memory to store/retrieve information.
+
+
+##Question 4:
+
+The difference between the two is a security and illusionist feature. The user-applications should not be working directly with physical memory or see the limitations on the hardware. The kernel malloc function facilitates communication between the physical memory and virtual memory and the user-malloc does not need to see any of that, it instead communicates to the kernel code to handle that function. Likewise with the user printf function. The user's code does not print to the screen directly it instead communicates to the kernel code to perform the communication with hardware and file descriptors.
+
+
+##Question 5:
+
+This is the system call that is made it is in Vector.S. Our user application is linked to the assembly usys.S this causes an interrupt and then the interrupt redirects to our Vector table in Vector.s to handle the Trap. The assembly below are the instructions when executing in the kernel. This then jumps to the handler for the Trap in the kernel and that first line is "if(tf->trapno == TRAP_SYSCALL){".
+
+0xffffffff80103c5a <+0>:	pushq  $0x0
+0xffffffff80103c5c <+2>:	pushq  $0x40
+0xffffffff80103c5e <+4>:	jmpq   0xffffffff8010449a <alltraps>
+
+
+##Question 6:
+
+176 bytes
+
+
+##Question 7:
+
+Below is the backtrace when we hit the sys_write function. As a brief explanation before we hit the breakpoint we come from the kernel syscall dispatch which is then called by the trap class and before that the Vector table.
+
+#0  sys_write () at kernel/sysfile.c:44
+#1  0xffffffff80105eb6 in syscall () at kernel/syscall.c:242
+#2  0xffffffff801047fe in trap (tf=0xffffffff80fe3f50) at kernel/trap.c:47
+#3  0xffffffff801044b9 in alltraps () at kernel/trapasm.S:20
+#4  0x0000000000000010 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+
+##Question 8
+For each member of the project team, how many hours did you
+spend on this lab?
+Dilraj - 80 hours + 
+Bryan  - 35 hours +
+Amin   - 30 hours
+TOTAL:  145 hours

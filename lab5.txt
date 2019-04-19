@@ -1,0 +1,43 @@
+Dilraj Devgun
+1537499
+
+Lab 5 Questions
+
+Question 1:
+
+The superblock describes the layout of the disk and the differnt regions' start block number and the size of the region on disk. The fields in the super block are as follow:
+
+  uint size;         // Size of file system image (blocks)
+  uint nblocks;      // Number of data blocks
+  uint bmapstart;    // Block number of first free map block
+  uint inodestart;   // Block number of the start of inode file
+  uint swapstart;    // Block number of the start of the swap space
+  uint swapsize;     // Size of swap space in block
+  uint logstart;     // start of the log space
+  uint logsize;      // size of the log region
+
+We added the swapstart/size and the logstart/size for lab 4 and 5 expectedly.
+
+
+Question 2:
+
+The purpose of the bitmap is to discern which blcoks on the disk are in use. The bitmap maps from index to a bit of either 0 and 1, 0 denoting a free block on disk and 1 denotes a block is in use.
+
+
+Question 3:
+
+Dirlook is used to do a lookup for a directory entry in a directroy, if found it returns the byte offset of the entry. It works by looping over the size of the directory inode and for each directory entry offset it does a read to read the directory entry and compares whether the name is equal to the name we are looking for. When we find it we return inode at the offset inside the directory.
+
+Question 4:
+
+File deletion would run in similar fashion to how file creation works current. When we make a file we have to modify the inodefile, the root directory and the bitmap. All in addition to having to actually make a new inode and writing it to disk. The same would have to happen in file deletion. What we would have to do is remove the blocks correlating to the deleted file in the bitmap and we would have to decrease the inodefile. The caveat is that when decreasing the inodefile we have to take into account that the file we are deleting is not at the end of the inode region it could be in the middle and then removing it would mean we have a gap in the inode file. There are two solutions we could shift all dinodes on the disk after the deleted file over or we would have to have a linked list method where we have to point from inode to the next inode on disk. In general these would be the steps for file deletion then to make it crash safe we would just have to utilise our implementation for write ahead logging so that a deletion is a single transaction and all disk operations involved seem to happen atomically and if the system crashes we can recover by redoing the operations we put in the write ahead log.
+
+
+Question 5:
+
+Support for multi-block write is not required in lab5. Describe how to extend your current implementation to support it.
+For multi block write we basically loop through the size that we have to write and we right a block at a time by calling bwrite on each block we need to write to. If we run over the space we have to then extend the inode by another block each time as we go in the loop. Calling bwrite then as ususal should run as a single transaction for all the blocks that we write. They all get logged and then flushed to disk once the transaction is complete.
+
+
+Time Spent:
+Dilraj Devgun: 50+ hours
